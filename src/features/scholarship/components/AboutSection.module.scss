@@ -1,0 +1,341 @@
+@use "../../../styles/variables" as *;
+
+.aboutSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+// --- Top Part: Image + Text ---
+.topPart {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 438px;
+  height: 438px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  padding: 29px;
+  background-image: $background-pattern-circular;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $color-background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImage {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.6px;
+  color: $color-primary;
+  margin: 0;
+}
+
+.description {
+  font-family: $font-main;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: -0.33px;
+  color: $color-secondary;
+  margin: 0;
+}
+
+// --- Bottom Part: Cards Grid ---
+.bottomPart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 24px;
+}
+
+// Grid placement
+.cardScholarship {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+
+.card {
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  padding: 32px;
+  background-color: $color-background;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cardStudy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cardWork {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+// Card Typography
+.cardLabel {
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 16px;
+  color: $color-primary;
+  margin-bottom: 8px;
+  line-height: 24px;
+  letter-spacing: -0.15px;
+}
+
+.cardValue {
+  font-family: $font-main;
+  font-weight: 300;
+  font-size: 32px;
+  color: $color-secondary;
+  margin-bottom: 16px;
+  line-height: 24px;
+  letter-spacing: -0.44px;
+  vertical-align: middle;
+}
+
+.cardDescription {
+  font-family: $font-main;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.16px;
+  color: $color-secondary;
+  margin: 0;
+}
+
+// Specific styling for the Scholarship Value card
+.scholarshipDetails {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid #dadada;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .label {
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 16px;
+    color: $color-primary;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+  }
+
+  .value {
+    font-family: $font-main;
+    font-weight: 300;
+    font-size: 16px;
+    color: $color-secondary;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+  }
+}
+
+// Graduation Divider
+.graduationDivider {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: #dadada;
+  }
+
+  .text {
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 16px;
+    color: $color-secondary;
+    line-height: 24px;
+    letter-spacing: -0.15px;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+.cardContract {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+}
+
+.patternRing {
+  display: none;
+}
+
+// --- Responsive Styles ---
+@media (max-width: 1024px) {
+  .aboutSection {
+    padding: 0 0 40px;
+    overflow: hidden;
+  }
+
+  .topPart {
+    position: relative;
+    flex-direction: column;
+    text-align: left;
+    padding: 60px 0 0;
+    margin-bottom: 40px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 60%;
+      background-color: $color-primary;
+      z-index: 0;
+    }
+  }
+
+  .patternRing {
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 334px;
+    height: 334px;
+    background-image: $background-pattern-circular;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .textContent {
+    position: relative;
+    z-index: 2;
+    background-color: #e6e6e6;
+    border-radius: 4px;
+    padding: 150px 24px 32px;
+    margin: 0 20px;
+    text-align: left;
+    height: 555px;
+  }
+
+  .imageWrapper {
+    position: relative;
+    z-index: 3;
+    width: 252px;
+    height: 252px;
+    margin: 0 auto -200px;
+    background-image: none;
+    padding: 12px;
+  }
+
+  .profileImage {
+    width: 252px;
+    height: 252px;
+  }
+
+  .title {
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: -0.44px;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.27px;
+  }
+
+  .bottomPart {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    gap: 16;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+  }
+
+  .cardScholarship,
+  .cardStudy,
+  .cardWork,
+  .cardContract,
+  .graduationDivider {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .cardLabel {
+    line-height: 22px;
+    letter-spacing: -0.16px;
+  }
+
+  .cardValue {
+    font-size: 24px;
+    letter-spacing: -0.22px;
+  }
+
+  .detailItem {
+    gap: 4px;
+
+    .label {
+      line-height: 22px;
+    }
+
+    .value {
+      font-size: 24px;
+      letter-spacing: -0.22px;
+    }
+  }
+
+  .graduationDivider {
+  grid-column: 1 / -1;
+
+  .line {
+    min-width: 100px;
+  }
+
+  .text {
+    flex-shrink: 0;
+  }
+}
+}

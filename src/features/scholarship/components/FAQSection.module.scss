@@ -1,0 +1,361 @@
+@use "../../../styles/variables" as *;
+
+.sectionWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  gap: 40px;
+}
+
+.title {
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.6px;
+  color: $color-primary;
+  margin: 0;
+  max-width: 441px;
+}
+
+// --- Filter Dropdown ---
+.filterWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.filterLabel {
+  font-family: $font-main;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.16px;
+  color: #6a6a6a;
+  white-space: nowrap;
+}
+
+.filterTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 235px;
+  height: 58px;
+  border: 1px solid #dadada;
+  border-radius: 29px;
+  background: $color-background;
+  padding: 12px 24px;
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.18px;
+  color: $color-primary;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.filterArrow {
+  transition: transform 0.2s ease;
+}
+
+.filterArrowOpen {
+  transform: rotate(180deg);
+}
+
+.filterMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: $color-background;
+  border: 1px solid #dadada;
+  border-radius: 29px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 235px;
+  padding: 8px 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+}
+
+.filterItem {
+  padding: 10px 20px;
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.18px;
+  color: #6a6a6a;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: $color-background;
+  }
+}
+
+.filterItemActive {
+  color: $color-primary;
+  font-weight: 500;
+}
+
+// --- FAQ List ---
+.faqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  display: grid;
+  grid-template-columns: 220px 1fr 40px;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid #dadada;
+  align-items: flex-start;
+
+  &:last-child {
+    border-bottom: 1px solid #dadada;
+  }
+}
+
+.faqCategory {
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 22px;
+  color: $color-primary;
+  line-height: 32px;
+  letter-spacing: -0.33px;
+  padding-top: 4px;
+}
+
+.faqContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqQuestion {
+  font-family: $font-main;
+  font-weight: 500;
+  font-size: 22px;
+  color: $color-secondary;
+  margin: 0;
+  padding-top: 4px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 32px;
+  letter-spacing: -0.33px;
+}
+
+.faqAnswer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+  overflow: hidden;
+}
+
+.faqAnswerOpen {
+  grid-template-rows: 1fr;
+}
+
+.faqAnswerInner {
+  overflow: hidden;
+}
+
+.faqAnswerText {
+  font-family: $font-main;
+  font-weight: 300;
+  font-size: 22px;
+  color: $color-secondary;
+  line-height: 32px;
+  letter-spacing: -0.33px;
+  margin: 16px 0 0 0;
+
+  & + & {
+    margin-top: 12px;
+  }
+}
+
+.toggleButton {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggleSvg {
+  width: 48px;
+  height: 48px;
+  overflow: visible;
+}
+
+.toggleBg {
+  fill: $color-background;
+  transition: fill 0.4s ease 0.15s;
+}
+
+.toggleButtonOpen .toggleBg {
+  fill: $color-primary;
+}
+
+.borderGrey {
+  fill: none;
+  stroke: #dadada;
+  stroke-width: 1.5;
+}
+
+.borderPurple {
+  fill: none;
+  stroke: $color-primary;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 106.8;
+  stroke-dashoffset: 106.8;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.toggleButtonOpen .borderPurple {
+  stroke-dashoffset: 0;
+}
+
+.iconGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(0deg);
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.toggleButtonOpen .iconGroup {
+  transform: rotate(360deg);
+}
+
+.iconLine {
+  stroke: #959595;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.iconLineVertical {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleY(1);
+  transition: transform 0.35s ease 0.2s;
+}
+
+.toggleButtonOpen .iconLineVertical {
+  transform: scaleY(0);
+}
+
+.toggleButtonAnimated.toggleButtonOpen .iconLine {
+  animation: iconFlashOpen 0.6s ease forwards;
+}
+
+.toggleButtonAnimated:not(.toggleButtonOpen) .iconLine {
+  animation: iconFlashClose 0.6s ease forwards;
+}
+
+@keyframes iconFlashOpen {
+  0% {
+    stroke: #959595;
+  }
+  50% {
+    stroke: $color-primary;
+  }
+  100% {
+    stroke: $color-background;
+  }
+}
+
+@keyframes iconFlashClose {
+  0% {
+    stroke: $color-background;
+  }
+  50% {
+    stroke: $color-primary;
+  }
+  100% {
+    stroke: #959595;
+  }
+}
+
+// --- Responsive ---
+@media (max-width: 1024px) {
+  .sectionWrapper {
+    padding: 40px 20px;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: -0.44px;
+  }
+
+  .filterWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filterTrigger {
+    width: 80%;
+    font-size: 18px;
+  }
+
+  .filterMenu {
+    right: unset;
+    width: 80%;
+  }
+
+  .faqItem {
+    grid-template-columns: 1fr 40px;
+    gap: 16px;
+  }
+
+  .faqItem:first-child {
+    border-top: none;
+  }
+
+  .faqCategory {
+    display: none;
+  }
+
+  .faqQuestion {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.27px;
+  }
+
+.toggleSvg {
+  width: 32px;
+  height: 32px;
+}
+}
