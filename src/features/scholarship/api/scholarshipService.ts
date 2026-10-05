@@ -165,15 +165,13 @@ export interface OGMeta {
 }
 
 export interface Testimonial {
-  id: number | string;      // number for real data, string for clones
+  id: number | string;
   name: string;
   role: string;
   quote: string;
   education: string;
   avatar: string;
 }
-
-// --- Root Interface ---
 
 export interface ScholarshipData {
   id: number;
@@ -186,10 +184,47 @@ export interface ScholarshipData {
   testimonials: Testimonial[];
 }
 
+// =============================================================
+// ⚠️ DEMO MODE
+// =============================================================
+// The Harbour.Space API returns a scholarship with an
+// `application_end_date` of Nov 2020, which makes the countdown
+// render as 00:00:00:00. To demonstrate the live countdown for
+// reviewers, we override the date with "now + N days" so the
+// timer is always ticking on page load.
+//
+// To disable: set DEMO_MODE to false.
+// =============================================================
+const DEMO_MODE = true;
+const DEMO_COUNTDOWN_DAYS = 6;
+
+const applyDemoOverrides = (data: ScholarshipData): ScholarshipData => {
+  if (!DEMO_MODE) return data;
+
+  const futureDate = new Date(
+    Date.now() + DEMO_COUNTDOWN_DAYS * 24 * 60 * 60 * 1000,
+  ).toISOString();
+
+  return {
+    ...data,
+    scholarship: {
+      ...data.scholarship,
+      application_end_date: futureDate,
+    },
+  };
+};
+
+// =============================================================
+// API
+// =============================================================
+
 export const fetchScholarshipData = async (): Promise<ScholarshipData> => {
-  const response = await fetch('/api/scholarship_pages/data-science-apprenticeship-zeptolab');
+  const response = await fetch(
+    "/api/scholarship_pages/data-science-apprenticeship-zeptolab",
+  );
   if (!response.ok) {
-    throw new Error('Failed to fetch scholarship data');
+    throw new Error("Failed to fetch scholarship data");
   }
-  return response.json();
+  const data = await response.json();
+  return applyDemoOverrides(data);
 };
