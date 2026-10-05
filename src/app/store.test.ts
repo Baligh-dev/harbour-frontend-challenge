@@ -1,4 +1,3 @@
-// src/app/store.test.ts
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { useScholarshipStore } from "./store";
 import * as scholarshipService from "../features/scholarship/api/scholarshipService";

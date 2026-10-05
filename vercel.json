@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://harbour.space/api/v1/:path*"
+    }
+  ]
+}

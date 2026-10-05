@@ -1,4 +1,3 @@
-// src/features/scholarship/components/ScholarshipPage.test.tsx
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { ScholarshipPage } from "./ScholarshipPage";
